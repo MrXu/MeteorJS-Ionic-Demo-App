@@ -1,0 +1,17 @@
+<template name="productCreation">
+
+    {{#contentFor "headerButtonLeft"}}
+        {{>ionNavBackButton class="button-positive" text=false}}
+    {{/contentFor}}
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">New product</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            {{> quickForm collection="Products" id="insertProductForm" type="insert" fields="name,description,price,duration,categoryId,pictures"}}
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>

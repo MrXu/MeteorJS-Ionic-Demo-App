@@ -1,0 +1,29 @@
+<template name="appLayout">
+
+  {{#ionBody}}
+    {{> ionNavBar}}
+
+    {{#ionNavView}}
+      {{> yield}}
+    {{/ionNavView}}
+
+    {{#if isAndroid}}
+      {{#ionTabs style="android"}}
+        {{> ionTab title="Explore" path="explore" icon="android-globe"}}
+        {{> ionTab title="Favorite" path="favorites" icon="android-favorite"}}
+        {{> ionTab title="Message" path="notifications" icon="android-notifications"}}
+        {{> ionTab title="Booking" path="bookings" icon="android-calendar"}}
+        {{> ionTab title="Me" path="profile" icon="android-person"}}
+      {{/ionTabs}}
+    {{else}}
+      {{#ionTabs style="ios"}}
+        {{> ionTab title="Explore" path="explore" iconOff="ios-flame-outline" iconOn="ios-flame" class="tab-item-positive"}}
+        {{> ionTab title="Favorite" path="favorites" iconOff="ios-heart-outline" iconOn="ios-heart" class="tab-item-positive"}}
+        {{> ionTab title="Message" path="notifications" iconOff="ios-email-outline" iconOn="ios-email" class="tab-item-positive"}}
+        {{> ionTab title="Booking" path="bookings" iconOff="ios-calendar-outline" iconOn="ios-calendar" class="tab-item-positive"}}
+        {{> ionTab title="Me" path="profile" iconOff="ios-person-outline" iconOn="ios-person" class="tab-item-positive"}}
+      {{/ionTabs}}
+    {{/if}}
+  {{/ionBody}}
+
+</template>

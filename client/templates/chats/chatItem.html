@@ -1,0 +1,16 @@
+<template name="chatItem">
+    {{#with chat}}
+
+    <a href="{{pathFor route='chat'}}" class="chat-list-item-a">
+
+        {{#ionItem}}
+
+            {{> avatar user=chatTarget size="small" shape="circle"}}
+            <h2>{{chatTarget.profile.name}} - <small>{{product.name}}</small></h2>
+
+        {{/ionItem}}
+
+    </a>
+
+    {{/with}}
+</template>

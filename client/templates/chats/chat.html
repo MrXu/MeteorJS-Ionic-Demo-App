@@ -1,0 +1,53 @@
+
+<template name="chat">
+
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton class="button-positive" text=false}}
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+      <button class="button button-clear pull-right button-positive" data-action="share-product" data-product-id="{{product._id}}">
+        {{> ionIcon icon='ios-upload-outline'}}
+      </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+          <h1 class="title">{{chatTarget.profile.name}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+        {{#with chatObject}}
+
+        <!-- chat history -->
+        <div class="padding">
+            {{#each chatBody}}
+                {{>chatMessage singleMsg=this}}
+            {{/each}}
+        </div>
+        <!-- chat history -->
+
+        <!--chat input form-->
+        <div class="chat-input-div">
+            <form class="new-message">
+                <div class="h-center">
+                    <div class="row rm-margin">
+                    <div class="form-group text-field">
+                        <input type="text" class="form-control" name="newMessage" id="newMessage" placeholder="say...">
+                    </div>
+                    <div class="button-field">
+                        <button type="submit" class="btn btn-default"><i class="ion ion-android-send"></i>Send</button>
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- / chat input form-->
+
+        {{/with}}
+
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

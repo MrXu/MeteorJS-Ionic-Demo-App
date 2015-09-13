@@ -1,0 +1,16 @@
+<template name="chatMessage">
+
+    {{#with singleMsg}}
+    <div>
+        {{#if isMe}}
+        <div class="chat-message chat-message-right">
+            {{content}}
+        </div>
+        {{else}}
+        <div class="chat-message chat-message-left">
+            {{content}}
+        </div>
+        {{/if}}
+    </div>
+    {{/with}}
+</template>

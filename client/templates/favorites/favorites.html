@@ -1,0 +1,29 @@
+<template name="favorites">
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Wish List</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+
+        {{#if products.count}}
+
+            {{#each products}}
+              {{> productTile product=this}}
+            {{/each}}
+
+        {{else}}
+
+            <div class="empty-view">
+                {{> ionIcon icon="ios-heart"}}
+                No wish list yet!
+            </div>
+
+        {{/if}}
+
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

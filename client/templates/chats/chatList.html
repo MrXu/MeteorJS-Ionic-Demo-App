@@ -1,0 +1,27 @@
+<template name="chatList">
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Notifications</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+
+            {{#if allChatsList}}
+                {{#ionList}}
+
+                    {{#each allChatsList}}
+                        {{>chatItem chat=this}}
+                    {{/each}}
+
+                {{/ionList}}
+            {{else}}
+                <div class="empty-view">
+                    {{> ionIcon icon="ios-bell"}}
+                    No notifications yet!
+                </div>
+            {{/if}}
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>

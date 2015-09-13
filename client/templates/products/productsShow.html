@@ -1,0 +1,112 @@
+<template name="productsShow">
+
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton class="button-positive" text=false}}
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-right button-positive" data-action="share-product" data-product-id="{{product._id}}">
+      {{> ionIcon icon='ios-upload-outline'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{product.name}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+
+      <div class="product-detail">
+        {{#with product}}
+
+          <!-- picture slides -->
+          {{#ionSlideBox}}
+
+            {{#each pictures}}
+              {{#ionSlide class="positive-bg"}}
+                <img src="{{url}}" />
+              {{/ionSlide}}
+            {{/each}}
+
+          {{/ionSlideBox}}
+          <!-- / picture slides -->
+
+          <!-- product brief introduction -->
+          <div class="padding">
+            <div class="h-center product-details-div">
+              <h3>{{name}}</h3>
+              <h4><small>Hosted by {{host.profile.name}}</small></h4>
+            </div>
+            <hr>
+            <div class="h-center product-details-div">
+              <div class="row rm-margin">
+                  <div class="col-1-3">
+                      <i class="ion ion-ios-time-outline"></i><br>
+                      <h4>$ {{price}}</h4>
+                  </div>
+                  <div class="col-1-3">
+                      <i class="ion ion-cash"></i><br>
+                      <h4>{{duration}} hr</h4>
+                  </div>
+                  <div class="col-1-3">
+                      <i class="ion ion-person"></i><br>
+                      <h4></h4>
+                  </div>
+              </div>
+            </div>
+              <!--product detailed introduction-->
+              <!-- / product detailed introduction-->
+          </div>
+          <!-- / product brief introduction -->
+
+        <!-- host introduction -->
+        <div class="padding product-details-div-grey">
+            <div class="h-center product-details-div">
+                {{#with host}}
+                    <h4>About {{profile.name}}</h4>
+                    {{> avatar user=this size="large" shape="circle"}}
+                    <p>{{host.introduction}}a brief introduction</p>
+                {{/with}}
+            </div>
+        </div>
+        <!-- host introduction -->
+
+        <!-- map -->
+
+        <!-- / map -->
+
+
+
+        {{/with}}
+
+        <div class="padding product-detail-comments">
+          <h5>Comments</h5>
+          {{#with product}}
+            <button class="button button-positive button-small button-circle button-new-comment" data-action="new-comment">
+              {{>ionIcon icon="plus"}}
+            </button>
+          {{/with}}
+        </div>
+
+        <div class="list">
+          {{#each comments}}
+            {{> _comment}}
+          {{/each}}
+        </div>
+
+      </div>
+
+    {{/ionContent}}
+
+    {{#ionFooterBar class="footer-bar-red"}}
+        {{#with product}}
+          <a data-action="initiate-chat" style="cursor: pointer">
+              <h1 class="title">Chat to book</h1>
+          </a>
+        {{/with}}
+    {{/ionFooterBar}}
+
+  {{/ionView}}
+</template>

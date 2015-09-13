@@ -1,0 +1,48 @@
+<template name="productTile">
+
+    {{#with product}}
+
+        <div class="col-lg-4 col-md-6 col-sm-12 rm-padding black-background" style="border-bottom: 1px #444 solid;">
+
+            <!--<a class="shade" href="/products/XEHdH3ccQv7PfmyZo">-->
+            <div class="product-tile-heart-div">
+                <button data-action="toggle-like">
+                {{#if liked}}
+                    {{> ionIcon icon="ios-heart"}}
+                {{else}}
+                    {{> ionIcon icon="ios-heart-outline"}}
+                {{/if}}
+                </button>
+            </div>
+            <a class="shade" href="{{pathFor route='productDetail'}}">
+
+                <div class="explore-tile" style="background-image: url('{{coverPic.url}}');">
+
+                    <div class="v-center-row">
+                        <div class="v-center-col">
+                            <h3><strong>{{name}}</strong></h3>
+                        </div>
+                    </div>
+
+                    <span class="explore-tile-price-tag">{{price}}</span>
+
+                </div>
+
+            </a>
+            <a href="{{pathFor route='productDetail'}}">
+                <div class="explore-tile-footer">
+                    <div class="explore-tile-footer-row">
+                        <div class="explore-tile-footer-left-col">
+                            <h4>{{name}}<br><small>{{description}}</small></h4>
+                        </div>
+                        <div class="explore-tile-footer-right-col"><div class="explore-tile-footer-thumbnail">{{> avatar user=author size="large" shape="circle"}}</div></div>
+                    </div>
+                </div>
+            </a>
+
+
+        </div>
+
+    {{/with}}
+
+</template>

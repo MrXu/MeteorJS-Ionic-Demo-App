@@ -1,0 +1,12 @@
+<template name="appLayoutNoNav">
+
+  {{#ionBody}}
+    {{> ionNavBar}}
+
+    {{#ionNavView}}
+      {{> yield}}
+    {{/ionNavView}}
+
+  {{/ionBody}}
+
+</template>

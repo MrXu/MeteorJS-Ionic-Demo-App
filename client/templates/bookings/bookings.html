@@ -1,0 +1,16 @@
+<template name="bookings">
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Bookings</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <div class="empty-view">
+                {{> ionIcon icon="ios-calendar"}}
+                No booking yet!
+            </div>
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>

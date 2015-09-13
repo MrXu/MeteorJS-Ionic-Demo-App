@@ -1,0 +1,22 @@
+<template name="_productCategoryTile">
+    {{#with productCategory}}
+
+    <div class="col-lg-4 col-md-6 col-sm-12 rm-padding black-background">
+
+        <!--<a class="shade" href="/products/XEHdH3ccQv7PfmyZo">-->
+        <a class="shade" href="{{pathFor route='category'}}">
+        <div class="explore-tile" style="background-image: url('../images/explore_covers/japan.jpeg');">
+
+            <div class="v-center-row">
+                <div class="v-center-col">
+                    <h3><strong>{{name}}</strong></h3>
+                </div>
+            </div>
+
+        </div>
+        </a>
+
+    </div>
+
+    {{/with}}
+</template>
