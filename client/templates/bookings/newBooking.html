@@ -1,0 +1,37 @@
+<template name="newBooking">
+    {{#ionModal customTemplate=true}}
+
+        {{#autoForm collection="Bookings" id="bookings-new-form" type="insert"}}
+            <!-- header -->
+            <div class="bar bar-header bar-stable">
+                <h2 class="title">New Booking</h2>
+                <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
+            </div>
+            <!-- / header -->
+
+            <div class="content has-header overflow-scroll">
+
+                <!-- product brief -->
+                {{#with product}}
+                <div class="padding">
+                    <table style="border: none;">
+                        <tr><td>Product name:</td><td>{{name}}</td></tr>
+                        <tr><td>Product price:</td><td>{{price}}</td></tr>
+                        <tr><td>Host:</td><td>{{author.profile.name}}</td></tr>
+                        <tr><td>Description:</td><td>{{description}}</td></tr>
+                    </table>
+                </div>
+                {{/with}}
+                <!-- / product brief -->
+
+                <!-- form fields -->
+                {{> afQuickField name='productId' type="hidden" value=productId label=false}}
+                {{> afQuickField name='appointmentDateTime'}}
+                <!-- / form fields -->
+
+                <button type="submit" class="button button-positive button-clear">Book</button>
+            </div>
+        {{/autoForm}}
+
+    {{/ionModal}}
+</template>

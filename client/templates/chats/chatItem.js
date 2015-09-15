@@ -19,5 +19,13 @@ Template.chatItem.helpers({
     },
     product: function(){
         return Products.findOne({_id: this.productId});
+    },
+    hasChat: function(){
+        if(this.chatBody){
+            return this.chatBody.length > 0;
+        }else{
+            return false;
+        }
+
     }
 });

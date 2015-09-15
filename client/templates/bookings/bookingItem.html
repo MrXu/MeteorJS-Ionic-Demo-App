@@ -1,0 +1,15 @@
+<template name="bookingItem">
+
+    {{#with booking}}
+        <a href="{{pathFor route='bookingDetail'}}" class="chat-list-item-a">
+
+            {{#ionItem}}
+                {{> avatar user=oppositeUser size="small" shape="circle"}}
+                <h2>{{oppositeUser.profile.name}} - <small>{{product.name}}</small></h2>
+                <h4>{{appointmentDateTime}}</h4>
+            {{/ionItem}}
+
+        </a>
+    {{/with}}
+
+</template>

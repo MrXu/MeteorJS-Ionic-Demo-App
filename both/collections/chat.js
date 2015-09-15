@@ -31,6 +31,9 @@ Chats.attachSchema(new SimpleSchema({
     productId: {
         type: String
     },
+    sellerId: {
+        type: String
+    },
     chatBody: {
         type: Array,
         optional: true,

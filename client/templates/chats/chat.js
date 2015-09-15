@@ -54,6 +54,14 @@ Template.chat.events({
         Meteor.call("Chat.newMessage",Router.current().params._id,message);
 
         event.target.newMessage.value = "";
+    },
+
+    'click [data-action=new-booking]': function (event, template) {
+        if (Meteor.user()) {
+            IonModal.open('newBooking', {productId: this.productId});
+        } else {
+            IonModal.open('signIn');
+        }
     }
 
 });

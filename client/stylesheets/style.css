@@ -27,6 +27,9 @@ body{
     margin-left: 0;
     margin-right: 0;
 }
+.screen-wide-row{
+    width: 100%;
+}
 .black-background{
     background-color: #000;
 }

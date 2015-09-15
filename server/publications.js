@@ -147,11 +147,48 @@ Meteor.publishComposite('chatComposite', function(_id){
   }
 
 });
-
-Meteor.publish('chatsOfUser',function(allChats){
-          return Chats.find({_id: {$in: allChats}});
+//not in use due to performance hit
+Meteor.publishComposite('chatsOfUser',function(){
+    return {
+      find: function(){
+        return Meteor.users.find({_id: this.userId});
+      },
+      children: [
+        {
+          find: function(user){
+            return Chats.find({userId: user._id});
+          },
+          children: [
+            {
+              find: function(chat){
+                return Products.find({_id: chat.productId});
+              }
+            }
+          ]
+        },
+        {
+          find: function(user){
+            return Chats.find({sellerId: user._id});
+          },
+          children: [
+            {
+              find: function(chat){
+                return Products.find({_id: chat.productId});
+              },
+              children: [
+                {
+                  find: function(product){
+                    return Meteor.users.find({_id: product.userId});
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
 });
-
+// in use
 Meteor.publishComposite('chatList', function(allChats){
   return {
     find: function(){
@@ -177,4 +214,79 @@ Meteor.publishComposite('chatList', function(allChats){
       }
     ]
   }
+});
+
+
+/**
+ * used by: favoritePage
+ */
+Meteor.publishComposite('productListComposite',function(productList){
+  return {
+    find: function(){
+      return Products.find({_id: {$in: productList}});
+    },
+    children: [
+      {
+        find: function(product){
+          return Meteor.users.find({_id:product.userId});
+        }
+      },
+      {
+        find: function (product) {
+          if(product.pictures!=null){
+            if(product.pictures.length>0) {
+              return UploadedImages.find({_id: {$in: product.pictures}});
+            }
+          }
+        }
+      }
+    ]
+  }
+});
+
+
+/**
+ * used throughout application
+ */
+Meteor.publish('bookingsAsBuyer', function(){
+   return Bookings.find({buyerId:this.userId});
+});
+Meteor.publish('bookingsAsSeller', function(){
+   return Bookings.find({hostId:this.userId});
+});
+//publish composite for booking details
+Meteor.publishComposite('bookingDetail',function(_id){
+   return {
+       find: function () {
+           return Bookings.find({_id:_id});
+       },
+       children: [
+           {
+               find: function(booking){
+                   return Products.find({_id:booking.productId});
+               },
+               children: [
+                   {
+                       find: function (product) {
+                           if(product.pictures!=null){
+                               if(product.pictures.length>0) {
+                                   return UploadedImages.find({_id: {$in: product.pictures}});
+                               }
+                           }
+                       }
+                   }
+               ]
+           },
+           {
+               find: function(booking){
+                   return Meteor.users.find({_id: booking.hostId});
+               }
+           },
+           {
+               find: function (booking) {
+                   return Meteor.users.find({_id: booking.buyerId});
+               }
+           }
+       ]
+   }
 });

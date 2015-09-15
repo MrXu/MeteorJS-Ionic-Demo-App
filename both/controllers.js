@@ -14,6 +14,8 @@ FavoritesController = AppController.extend({});
 
 BookingsController = AppController.extend({});
 
+BookingDetailController = AppController.extend({});
+
 UsersShowController = AppController.extend({});
 
 NotificationsController = AppController.extend({});

@@ -28,6 +28,12 @@ Router.route('/bookings', {
   controller: 'BookingsController'
 });
 
+Router.route('booking/:_id',{
+  name: 'bookingDetail',
+  template: 'bookingDetail',
+  controller: 'BookingDetailController'
+});
+
 Router.route('/products/:_id', {
   name: 'productDetail',
   template: 'productsShow',

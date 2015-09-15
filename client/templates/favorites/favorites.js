@@ -1,6 +1,7 @@
 Template.favorites.created = function () {
   this.autorun(function () {
-    this.subscription = Meteor.subscribe('products');
+    this.subscription = Meteor.subscribe('productListComposite',Meteor.user().profile.favoriteProductIds);
+    //this.subscription = Meteor.subscribe('products');
   }.bind(this));
 };
 

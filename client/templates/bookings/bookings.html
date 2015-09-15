@@ -6,10 +6,27 @@
 
     {{#ionView}}
         {{#ionContent}}
+
+            {{#if bookingListAsBuyer}}
+                {{#each bookingListAsBuyer}}
+                    {{>bookingItem booking=this}}
+                {{/each}}
+            {{/if}}
+
+            {{#if bookingListAsSeller}}
+                {{#each bookingListAsSeller}}
+                    {{>bookingItem booking=this}}
+                {{/each}}
+            {{/if}}
+
+
+            {{#if isEmpty}}
             <div class="empty-view">
                 {{> ionIcon icon="ios-calendar"}}
                 No booking yet!
             </div>
+            {{/if}}
+
         {{/ionContent}}
     {{/ionView}}
 

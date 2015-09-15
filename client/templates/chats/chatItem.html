@@ -1,6 +1,6 @@
 <template name="chatItem">
     {{#with chat}}
-
+    {{#if hasChat}}
     <a href="{{pathFor route='chat'}}" class="chat-list-item-a">
 
         {{#ionItem}}
@@ -11,6 +11,6 @@
         {{/ionItem}}
 
     </a>
-
+    {{/if}}
     {{/with}}
 </template>

@@ -16,6 +16,9 @@ Template.chatList.created = function () {
 };
 
 Template.chatList.rendered = function () {
+    if (!Meteor.loggingIn() && !Meteor.user()) {
+        IonModal.open('signIn');
+    }
     this.autorun(function () {
         if (!this.subscription.ready()) {
             IonLoading.show();

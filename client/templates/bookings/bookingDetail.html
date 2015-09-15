@@ -1,0 +1,48 @@
+<template name="bookingDetail">
+
+    {{#contentFor "headerButtonLeft"}}
+        {{>ionNavBackButton class="button-positive" text=false}}
+    {{/contentFor}}
+
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Booking for {{product.name}}</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+
+            {{#if iamSeller}}
+                {{product.name}} - {{buyer.profile.name}}
+            {{/if}}
+
+            {{#if iamBuyer}}
+
+                {{#with product}}
+                    {{>productTile product=this }}
+                {{/with}}
+
+
+                {{#with booking}}
+                <div class="screen-wide-row">
+                    <div class="col-sm-12">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Appointment time</td><td>{{appointmentDateTime}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td><td>{{price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{/with}}
+
+            {{/if}}
+
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>

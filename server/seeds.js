@@ -6,6 +6,7 @@ Meteor.startup(function() {
   ProductCategories.remove({});
   Products.remove({});
   Chats.remove({});
+  Bookings.remove({});
 
   /**
    * testing data

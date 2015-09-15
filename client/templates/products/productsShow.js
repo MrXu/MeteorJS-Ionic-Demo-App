@@ -31,6 +31,13 @@ Template.productsShow.helpers({
     return Meteor.users.findOne({_id: this.userId});          //under with product tag, 'this' refers to product
   },
 
+  notMyProduct: function(){
+    if(!Meteor.user()){
+      return true;
+    }
+    return (Meteor.user()._id != this.userId);
+  },
+
   comments: function () {
     return Comments.find({productId: Router.current().params._id}, {sort: {createdAt: -1}});
   }

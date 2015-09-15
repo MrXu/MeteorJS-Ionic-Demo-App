@@ -27,15 +27,22 @@ Meteor.methods({
   // create a chat if not existed yet
   'Chat.init': function(productId){
     if(!Meteor.user()){
-      return 'error user';
+      return null;
     }
 
     if(productId===''){
-      return 'error id';
+      return null;
     }
 
     if(Products.find({_id: productId}).count()<1){
-      return 'error pro';
+      return null;
+    }
+    var product = Products.findOne({_id: productId});
+    var sellerId = product.userId;
+
+    //forbid user initiate chat with self
+    if(sellerId == Meteor.user()._id){
+      return null;
     }
 
     var previousChat = Chats.findOne({userId:Meteor.user()._id,productId:productId});
@@ -45,7 +52,8 @@ Meteor.methods({
 
     var chatId = Chats.insert({
       userId:  Meteor.user()._id,
-      productId: productId
+      productId: productId,
+      sellerId: sellerId
     });
 
     //add chat id to BOTH sides
@@ -83,6 +91,38 @@ Meteor.methods({
 
 
     }
+
+  },
+
+  //new bookings methods
+  'Booking.new': function (productId, dateTime) {
+    if(!Meteor.user()){
+      return 'error user';
+    }
+    if(productId==="" || dateTime ===""){
+      return 'error id';
+    }
+    var appointmentDate = new Date(dateTime);
+    var product = Products.findOne({_id:productId});
+    if(!product){
+      return null;
+    }
+
+    if(product.userId == Meteor.user()._id){
+      return "cannot booking owned product";
+    }
+
+    var newBooking = {
+      buyerId: Meteor.user()._id,
+      productId: productId,
+      hostId: product.userId,
+      appointmentDateTime: appointmentDate,
+      price: product.price
+    }
+
+    var bookingId = Bookings.insert(newBooking);
+
+    return bookingId;
 
   }
 

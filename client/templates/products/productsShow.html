@@ -100,13 +100,17 @@
 
     {{/ionContent}}
 
-    {{#ionFooterBar class="footer-bar-red"}}
-        {{#with product}}
+  {{#with product}}
+      {{#if notMyProduct}}
+        {{#ionFooterBar class="footer-bar-red"}}
+
           <a data-action="initiate-chat" style="cursor: pointer">
               <h1 class="title">Chat to book</h1>
           </a>
-        {{/with}}
-    {{/ionFooterBar}}
+
+        {{/ionFooterBar}}
+      {{/if}}
+  {{/with}}
 
   {{/ionView}}
 </template>

@@ -25,3 +25,14 @@ Template.productCreation.helpers({
 Template.productCreation.events({
 
 });
+
+//after success post
+AutoForm.hooks({
+    'insertProductForm': {
+        onSuccess: function (operation, result, template) {
+            console.log(result);
+            IonModal.close();
+            Router.go('productDetail', {_id: result});
+        }
+    }
+});
