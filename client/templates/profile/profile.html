@@ -17,22 +17,30 @@
         {{> _profileHeader}}
 
         <!--invite friends-->
-        <div class="profile-header" style="background-image: url('../images/background/friends-v1.jpg');">
-            <h3>More people to play with</h3>
-            <h3>Invite your friends today</h3>
-            <a href="" class="btn btn-success btn-lg" style="height: auto; ">Invite Now</a>
+        <div class="screen-wide-div" style="background-image: url('../images/background/friends-v1.jpg');height: 40%;">
+            <div class="row v-center-row h-center">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 v-center-col my-profile-div">
+                    <h3>More people to play with</h3>
+                    <h3>Invite your friends today</h3>
+                    <a href="" class="btn btn-success btn-lg button button-block button-positive" style="height: auto; ">Invite Now</a>
+                </div>
+            </div>
         </div>
         <!--/invite friends-->
 
         <!--become a passion tutor-->
-        <div class="profile-header" style="background-image: url('../images/background/friends-v1.jpg');">
-          {{#if hostedProductIds }}
-              <a href="{{pathFor route='productCreation'}}" class="btn btn-success" style="height: auto; ">Add more training sessions</a>
-          {{else}}
-              <h3>Skilled enough to teach others?</h3>
-              <h3>Become a passion trainer today</h3>
-              <a href="{{pathFor route='productCreation'}}" class="btn btn-success btn-lg" style="height: auto; ">Become a passion host</a>
-          {{/if}}
+        <div class="screen-wide-div" style="background-image: url('../images/background/becometrainer-v1.jpg');height: 40%;">
+            <div class="row v-center-row h-center">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 v-center-col my-profile-div">
+                  {{#if hostedProductIds }}
+                      <a href="{{pathFor route='productCreation'}}" class="btn btn-success button button-block button-positive" style="height: auto; ">Add more training sessions</a>
+                  {{else}}
+                      <h3>Skilled enough to teach others?</h3>
+                      <h3>Become a passion trainer today</h3>
+                      <a href="{{pathFor route='productCreation'}}" class="btn btn-success btn-lg button button-block button-positive" style="height: auto; ">Become a passion host</a>
+                  {{/if}}
+                </div>
+            </div>
         </div>
         <!--/become a passion tutor-->
 
@@ -42,12 +50,6 @@
         {{/ionList}}
         <!--/hosted training-->
 
-        <!---->
-        {{#ionList}}
-          {{#each votedProducts}}
-            {{> _productItem product=this path="products.show"}}
-          {{/each}}
-        {{/ionList}}
       {{else}}
         <div class="empty-view">
           {{> ionIcon icon="ios-person"}}

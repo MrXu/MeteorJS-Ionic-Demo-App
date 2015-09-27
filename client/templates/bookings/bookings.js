@@ -10,17 +10,29 @@ Template.bookings.rendered = function () {
 Template.bookings.helpers({
 
     bookingListAsBuyer: function(){
-        return Bookings.find({buyerId: Meteor.user()._id});
+        if(Meteor.user()){
+            return Bookings.find({buyerId: Meteor.user()._id});
+        }else{
+            return null;
+        }
     },
 
     bookingListAsSeller: function(){
-        return Bookings.find({hostId: Meteor.user()._id});
+        if(Meteor.user()) {
+            return Bookings.find({hostId: Meteor.user()._id});
+        }else{
+            return null;
+        }
     },
 
     isEmpty: function(){
-        var buyerBooking = Bookings.findOne({buyerId: Meteor.user()._id});
-        var sellerBooking = Bookings.find({hostId: Meteor.user()._id});
-        return (!buyerBooking && !sellerBooking);
+        if(Meteor.user()) {
+            var buyerBooking = Bookings.findOne({buyerId: Meteor.user()._id});
+            var sellerBooking = Bookings.findOne({hostId: Meteor.user()._id});
+            return (!buyerBooking && !sellerBooking);
+        }else{
+            return true;
+        }
     }
 
 });
