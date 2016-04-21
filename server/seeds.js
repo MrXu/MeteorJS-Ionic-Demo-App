@@ -14,33 +14,23 @@ Meteor.startup(function() {
    */
   var productCategories = [
     {
-      imageName: 'boxing.jpg',
-      name: 'Boxing',
-      description: 'Fight and win'
-    },
-    {
-      imageName: 'music.jpg',
+      imageName: 'music-01.jpg',
       name: 'Music',
       description: 'Description'
     },
     {
-      imageName: 'food.jpg',
+      imageName: 'food-01.jpg',
       name: 'Food',
       description: 'Description'
     },
     {
-      imageName: 'art.jpg',
-      name: 'Art',
+      imageName: 'sports-01.jpg',
+      name: 'Sports',
       description: 'Description'
     },
     {
-      imageName: 'dance.jpg',
-      name: 'Dance',
-      description: 'Description'
-    },
-    {
-      imageName: 'photography.jpg',
-      name: 'Photography',
+      imageName: 'language-01.jpg',
+      name: 'Language',
       description: 'Description'
     }
   ];
@@ -178,6 +168,7 @@ Meteor.startup(function() {
         name: productCategory.name,
         description: productCategory.description
       });
+      //console.log('Inserting...');
     });
   }
 

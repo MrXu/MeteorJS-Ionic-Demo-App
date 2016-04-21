@@ -58,6 +58,7 @@ Template.newBooking.events({
                 console.log("Booking failed");
             }
             console.log("Booking success "+data);
+            Router.go('bookings');
         });
 
     }

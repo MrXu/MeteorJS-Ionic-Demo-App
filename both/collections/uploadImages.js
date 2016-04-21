@@ -5,7 +5,8 @@
 //var imagePath = process.env.PWD + '/public/images/uploaded';
 
 UploadedImages = new FS.Collection("images", {
-    stores: [new FS.Store.FileSystem("images", {path: "~/Meteor/passion/public/images/uploaded"})],
+    //stores: [new FS.Store.FileSystem("images", {path: "~/Meteor/passion/public/images/uploaded"})],   //running locally
+    stores: [new FS.Store.FileSystem("images")],
     filter: {
         maxSize: 1048576, // in bytes
         allow: {

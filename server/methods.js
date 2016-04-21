@@ -120,9 +120,15 @@ Meteor.methods({
       price: product.price
     }
 
-    var bookingId = Bookings.insert(newBooking);
+    Bookings.insert(newBooking,function(err,record){
+      if(err){
+        console.log(err);
+      }
 
-    return bookingId;
+      return record;
+    });
+
+
 
   }
 

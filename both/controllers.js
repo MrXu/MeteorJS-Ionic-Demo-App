@@ -24,4 +24,6 @@ ProfileController = AppController.extend({});
 
 ProductCreationController = AppController.extend({});
 
-ChatController = AppController.extend({});
+ChatController = AppController.extend({
+  layoutTemplate:'appLayoutNoNav'
+});

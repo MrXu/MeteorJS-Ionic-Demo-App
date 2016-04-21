@@ -29,17 +29,16 @@
         <!-- chat history -->
 
 
-        <button class="button button-positive button-small button-circle button-new-comment" data-action="new-booking">
-            {{>ionIcon icon="plus"}}
-        </button>
-
 
         <!--chat input form-->
         <div class="chat-input-div">
+            <button class="button button-positive button-middle button-circle button-new-comment chat-book-button" data-action="new-booking">
+                {{>ionIcon icon="plus"}}
+            </button>
             <form class="new-message">
                 <div class="h-center">
                     <div class="row rm-margin">
-                    <div class="form-group text-field">
+                    <div class="form-group text-field" style="margin-bottom:0;">
                         <input type="text" class="form-control" name="newMessage" id="newMessage" placeholder="say...">
                     </div>
                     <div class="button-field">

@@ -14,13 +14,27 @@
   {{#ionView}}
     {{#ionContent}}
 
-        <div class="screen-wide-div" style="background-image: url('../images/background/beach.jpg');height:100%;">
-            <div class="row v-center-row h-center">
-                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 v-center-col">
-                    <h3>Explore yourself. Be someboday.</h3>
-                </div>
-            </div>
-        </div>
+        {{#ionSlideBox}}
+            {{#ionSlide class="positive-bg explore-slide-wrapper explore-slide-1"}}
+                <h2 class="color-white-headline">Step Out</h2>
+                <h2 class="color-white-headline">Explore World</h2>
+                <h2 class="color-white-headline">Dare to be different</h2>
+            {{/ionSlide}}
+            {{#ionSlide class="dark-bg explore-slide-wrapper explore-slide-2"}}
+                <h2 class="color-white-headline">Be Somebody</h2>
+                <h2 class="color-white-headline">Explore Yourself</h2>
+                <h2 class="color-white-headline">Dare to dream</h2>
+            {{/ionSlide}}
+            {{#ionSlide class="light-bg explore-slide-wrapper explore-slide-3"}}
+                <h2 class="color-white-headline">
+                    To see the world, <br>
+                    things dangerous to come to, <br>
+                    to see behind walls, <br>
+                    draw closer, to find each other, <br>
+                    and to feel.
+                </h2>
+            {{/ionSlide}}
+        {{/ionSlideBox}}
 
 
         {{#each productCategories}}
